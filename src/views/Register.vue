@@ -15,6 +15,7 @@
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group">
               <input
+                data-cy="username"
                 class="form-control form-control-lg"
                 type="text"
                 v-model="username"

@@ -12,9 +12,13 @@
           <ul v-if="errors" class="error-messages">
             <li v-for="(v, k) in errors" :key="k">{{ k }} {{ v | error }}</li>
           </ul>
-          <form @submit.prevent="onSubmit(email, password)">
+          <form
+            @submit.prevent="onSubmit(email, password)"
+            data-cy="login-form"
+          >
             <fieldset class="form-group">
               <input
+                data-cy="username"
                 class="form-control form-control-lg"
                 type="text"
                 v-model="email"
@@ -23,6 +27,7 @@
             </fieldset>
             <fieldset class="form-group">
               <input
+                data-cy="password"
                 class="form-control form-control-lg"
                 type="password"
                 v-model="password"
