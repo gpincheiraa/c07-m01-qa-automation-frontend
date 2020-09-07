@@ -27,14 +27,18 @@ const getters = {
 const actions = {
   [LOGIN](context, credentials) {
     return new Promise(resolve => {
+      console.log("fack");
       ApiService.post("users/login", { user: credentials })
         .then(({ data }) => {
+          console.log("fack2");
           context.commit(SET_AUTH, data.user);
           resolve(data);
         })
         .catch(({ response }) => {
+          console.log(response);
           context.commit(SET_ERROR, response.data.errors);
         });
+      console.log("fack4");
     });
   },
   [LOGOUT](context) {
@@ -88,6 +92,7 @@ const actions = {
 
 const mutations = {
   [SET_ERROR](state, error) {
+    debugger;
     state.errors = error;
   },
   [SET_AUTH](state, user) {

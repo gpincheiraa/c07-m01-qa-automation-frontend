@@ -2,6 +2,14 @@
 
 describe("login test suite", () => {
   it("does not work with wrong credentials", () => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "https://conduit.productionready.io/api/users/login",
+      status: 401,
+      response: "fixture:401.json"
+    });
+
     cy.visit("/");
     cy.get("[data-cy=sign-in]").click();
     cy.hash().should("equal", "#/login");
